@@ -5,7 +5,8 @@ Simple RSS reader web application with multiple views
 ## Prerequisites
 
 Project has been built using following technologies:
-##### PHP 7.3.13 
+##### PHP 7.3.13
+##### Symfony 5.0.5
 ##### Node.js 12.14.0 
 ##### NPM 6.13.4
 ##### Javascript ECMAScript 6
