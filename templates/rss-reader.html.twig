@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rss Reader{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('rss-reader') }}
+{% endblock %}
+
+{% block body %}
+    <a href="{{ path('logout') }}">Logout user</a>
+
+    <h2>10 most frequent words in the feed</h2>
+
+    <div class="mdc-data-table">
+        <table class="mdc-data-table__table" aria-label="Dessert calories">
+            <thead>
+            <tr class="mdc-data-table__header-row">
+                <th class="mdc-data-table__header-cell" role="columnheader" scope="col">Word</th>
+                <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric" role="columnheader"
+                    scope="col">Counts
+                </th>
+            </tr>
+            </thead>
+            <tbody class="mdc-data-table__content">
+            {% for word, counts in feedWordsData %}
+                <tr class="mdc-data-table__row">
+                    <td class="mdc-data-table__cell">{{ word }}</td>
+                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{{ counts }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Feed items</h2>
+
+    {% for feedItem in feedItems %}
+        <div class="mdc-card demo-card">
+            <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+                <div class="demo-card__primary">
+                    <h3 class="demo-card__title mdc-typography mdc-typography--headline6">{{ feedItem['title'] }}</h3>
+                </div>
+                <div class="demo-card__secondary mdc-typography mdc-typography--body2">{{ feedItem['summary']|raw }}</div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('rss-reader') }}
+{% endblock %}

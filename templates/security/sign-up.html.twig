@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('sign-up') }}
+{% endblock %}
+
+{% block body %}
+    <hgroup>
+        <h1>Sign Up</h1>
+    </hgroup>
+    <form>
+        <div id="success-msg" class="success-msg" hidden="hidden">
+            <i class="fa fa-check"></i>
+            <span id="success-msg-text" data-default='Now you can proceed to <a href="{{ path('login') }}">Login</a>'>
+            </span>
+        </div>
+
+        <div class="group">
+            <input id="email-input" type="email" data-url="{{ path('validate_email') }}">
+            <span class="highlight"></span><span class="bar"></span>
+            <label id="email-label" data-field="Email">Email</label>
+        </div>
+        <div class="group">
+            <input id="password-input" type="password" autocomplete="off">
+            <span class="highlight"></span><span class="bar"></span>
+            <label id="password-label" data-field="Password">Password</label>
+        </div>
+        <button id="sign-up-btn" type="button" class="button buttonBlue" data-url="{{ path('sign_up') }}">Sign Up
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('sign-up') }}
+{% endblock %}

@@ -1,0 +1,12 @@
+body {
+    text-align: center;
+}
+
+div {
+    overflow-x: hidden !important;
+}
+
+td {
+    text-align: center;
+    border: solid 0.1rem;
+}
