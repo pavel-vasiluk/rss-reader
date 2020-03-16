@@ -53,7 +53,7 @@ class UserContext extends RawMinkContext implements Context
     }
 
     /**
-     * Create valid admin user
+     * Create user
      *
      * @Given user with username :username and password :password exists
      *
