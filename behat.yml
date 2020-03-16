@@ -1,0 +1,27 @@
+default:
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: 'config/bootstrap.php'
+                path: 'src/Kernel.php'
+                class: 'App\Kernel'
+        Behat\MinkExtension:
+            base_url: 'http://your_local_base_url'
+            selenium2:
+                wd_host: "http://your_local_wd_host:9515" # IP and port where Selenium Hub server listens for connection
+                browser: 'chrome'
+                capabilities:
+                    browserName: "chrome"
+                    browser: "chrome"
+                    version:  "ANY"
+#                    chrome:
+#                        switches:
+#                            - "--headless"
+    suites:
+        RssReaderSuite:
+            contexts:
+                - Feature\FeatureContext
+                - Feature\UserContext:
+                      userRepository: '@App\Repository\UserRepository'
+                      entityManager: '@Doctrine\ORM\EntityManagerInterface'
+                      passwordEncoder: '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'

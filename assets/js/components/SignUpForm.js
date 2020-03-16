@@ -45,7 +45,8 @@ class SignUpForm {
                 formData
             ).then(response => {
                 if(response.hasOwnProperty("errors") && response.errors.hasOwnProperty("email")) {
-                    this.formErrorsMapper.setFormErrors(this.emailLabelElem, response.errors.email);
+                    let error = `<span class="error-response-msg">${response.errors.email}</span>`;
+                    this.formErrorsMapper.setFormErrors(this.emailLabelElem, error);
                 } else {
                     this.clearErrors(this.emailLabelElem);
                 }
@@ -73,12 +74,12 @@ class SignUpForm {
                     Object.keys(response.errors).forEach(key => {
                         let element =
                             key === 'email' ? this.emailLabelElem : this.passwordLabelElem,
-                            error = response.errors[key];
+                            error = `<span class="error-response-msg">${response.errors[key]}</span>`;
                         this.formErrorsMapper.setFormErrors(element, error);
                         this.showSignUpSuccessMsg(false)
                     });
                 } else if (response.hasOwnProperty('success')) {
-                    let successMessage = `${response.success.message} `;
+                    let successMessage = `<span class="success-response-msg">${response.success.message}</span> `;
                     this.showSignUpSuccessMsg(true, successMessage);
                     this.clearErrors(this.emailLabelElem, this.passwordLabelElem);
                 }
